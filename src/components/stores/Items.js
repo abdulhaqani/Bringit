@@ -12,9 +12,7 @@ const Users = () => {
   } else {
     return (
       <div style={itemStyle}>
-        {items.map(item => (
-          <StoreItem key={item.id} item={item}></StoreItem>
-        ))}
+        <StoreItem key="123" item="321"></StoreItem>
       </div>
     );
   }

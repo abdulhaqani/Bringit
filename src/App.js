@@ -1,8 +1,33 @@
 import React from 'react';
-import './App.css';
+import Navbar from './components/layout/Navbar';
+import Alert from './components/layout/Alert';
+import About from './components/pages/About';
+import Home from './components/pages/Home';
+import NotFound from './components/pages/NotFound';
 
-function App() {
-  return <div className="App">Send</div>;
-}
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import AlertState from './context/alert/AlertState';
+import StoreState from './context/store/StoreState';
+const App = () => {
+  return (
+    <StoreState>
+      <AlertState>
+        <Router>
+          <div className="app">
+            <Navbar />
+            <div className="container">
+              <Alert />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/about" component={About} />
+                <Route component={NotFound} />
+              </Switch>
+            </div>
+          </div>
+        </Router>
+      </AlertState>
+    </StoreState>
+  );
+};
 
 export default App;
