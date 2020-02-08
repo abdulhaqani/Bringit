@@ -6,11 +6,16 @@ import Home from './components/pages/Home';
 import NotFound from './components/pages/NotFound';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import GithubState from './context/github/GithubState';
 import AlertState from './context/alert/AlertState';
-import StoreState from './context/store/StoreState';
+
+import './App.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 const App = () => {
   return (
-    <StoreState>
+    <GithubState>
       <AlertState>
         <Router>
           <div className="app">
@@ -26,7 +31,7 @@ const App = () => {
           </div>
         </Router>
       </AlertState>
-    </StoreState>
+    </GithubState>
   );
 };
 

@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
-import Search from '../stores/Search';
-import Items from '../stores/Items';
+import Search from '../users/Search';
+import Users from '../users/Users';
 
 export const Home = () => {
   return (
     <Fragment>
       <Search></Search>
-      <Items></Items>
+      <Users></Users>
     </Fragment>
   );
 };

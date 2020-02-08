@@ -1,11 +1,11 @@
-import { SEARCH_ITEMS, SET_LOADING, CLEAR_ITEMS } from '../types';
+import { SEARCH_USERS, SET_LOADING, CLEAR_USERS } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
-    case SEARCH_ITEMS:
+    case SEARCH_USERS:
       return {
         ...state,
-        items: action.payload,
+        users: action.payload,
         loading: false
       };
     case SET_LOADING:
@@ -13,10 +13,10 @@ export default (state, action) => {
         ...state,
         loading: true
       };
-    case CLEAR_ITEMS:
+    case CLEAR_USERS:
       return {
         ...state,
-        items: [],
+        users: [],
         loading: false
       };
     default:
