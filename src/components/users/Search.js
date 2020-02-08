@@ -34,11 +34,13 @@ const Search = () => {
           type="submit"
           value="Search"
           className="btn btn-dark btn-block"
+          style={{ marginBottom: '30px' }}
         />
       </form>
       {githubContext.users.length > 0 && (
         <button
           className="btn btn-light btn-block"
+          style={{ marginBottom: '30px' }}
           onClick={githubContext.clearUsers}
         >
           Clear

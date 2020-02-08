@@ -22,6 +22,7 @@ const App = () => {
         <Router>
           <div className="app">
             <Navbar />
+
             <div className="container">
               <Alert />
               <Switch>
