@@ -4,6 +4,8 @@ import Alert from './components/layout/Alert';
 import About from './components/pages/About';
 import Home from './components/pages/Home';
 import NotFound from './components/pages/NotFound';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 

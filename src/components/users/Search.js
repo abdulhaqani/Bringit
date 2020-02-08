@@ -26,7 +26,7 @@ const Search = () => {
         <input
           type="text"
           name="text"
-          placeholder="Search Users"
+          placeholder="Search Items"
           value={text}
           onChange={onChange}
         />
