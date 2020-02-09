@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 });
 
 router.post('/search', (req, res) => {
-  DisplayForms.find({ title: /req.body.search/i })
+  DisplayForms.find({ title: { $regex: req.body.search, $options: 'i' } })
     .sort({ title: 'desc' })
     .then(displayForms => {
       res.render('displayForms/index', {
@@ -43,23 +43,26 @@ router.post('/search', (req, res) => {
 
 router.get('/view', (req, res) => {
   const name = req.query.valid;
-  DisplayForms.find({ title: /name/i }).then(displayForms => {
-    res.render('displayForms/view', {
-      displayForms
-    });
-  });
+  DisplayForms.find({ title: { $regex: name, $options: 'i' } }).then(
+    displayForms => {
+      res.render('displayForms/view', {
+        displayForms
+      });
+    }
+  );
 });
 router.post('/pic', (req, res) => {
   const contextVal = req.body.name;
-  console.log(req.body);
-  DisplayForms.find({ title: /contextVal/i }).then(() => {
-    res.redirect(`../displayForms/view?valid=${contextVal}`);
-  });
+  DisplayForms.find({ title: { $regex: contextVal, $options: 'i' } }).then(
+    () => {
+      res.redirect(`../displayForms/view?valid=${contextVal}`);
+    }
+  );
 });
 
 router.post('/cart', (req, res) => {
   DisplayForms.updateMany(
-    { title: /req.body.name/i },
+    { title: { $regex: req.body.name, $options: 'i' } },
     { $set: { inCart: true } }
   ).then(displayForms => {
     res.redirect('/');
