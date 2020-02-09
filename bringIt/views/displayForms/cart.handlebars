@@ -1,0 +1,15 @@
+<br>
+{{#each displayForms}}
+
+<div class="card d-inline-flex p-2" style="width: 30%">
+  <h4>{{title}}</h4>
+  <p>{{details}}</p>
+  <img src={{img_path}} name={{title}} class="mx-auto" style="width: 100%" alt="">
+  <p class="text-center">{{company}}: ${{price}}</p>
+</div>
+{{/each}}
+<br>
+<div class="container text-center">
+<a href="/payment"></a><button class="btn btn-success text-center mx-auto" name="purchase">Purchase cart</button>
+
+</div>

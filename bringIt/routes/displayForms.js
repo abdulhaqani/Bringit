@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable eqeqeq */
 const express = require('express');
 const mongoose = require('mongoose');
@@ -31,7 +32,7 @@ router.post('/', (req, res) => {
 });
 
 router.post('/search', (req, res) => {
-  DisplayForms.find({ title: req.body.search })
+  DisplayForms.find({ title: /req.body.search/i })
     .sort({ title: 'desc' })
     .then(displayForms => {
       res.render('displayForms/index', {
@@ -41,27 +42,43 @@ router.post('/search', (req, res) => {
 });
 
 router.get('/view', (req, res) => {
-  console.log(req.body.name);
-  DisplayForms.find({ title: res.name }).then(displayForms => {
+  const name = req.query.valid;
+  DisplayForms.find({ title: /name/i }).then(displayForms => {
     res.render('displayForms/view', {
       displayForms
     });
   });
 });
 router.post('/pic', (req, res) => {
-  DisplayForms.find({ title: req.body.name }).then(displayForms => {
-    res.render('displayForms/view', {
-      displayForms
-    });
+  const contextVal = req.body.name;
+  console.log(req.body);
+  DisplayForms.find({ title: /contextVal/i }).then(() => {
+    res.redirect(`../displayForms/view?valid=${contextVal}`);
   });
 });
 
 router.post('/cart', (req, res) => {
-  DisplayForms.update({ title: req.body.name }, { inCart: true }).then(
-    displayForms => {
-      res.redirect('/');
-      req.flash('success_msg', 'added to cart');
-    }
-  );
+  DisplayForms.updateMany(
+    { title: /req.body.name/i },
+    { $set: { inCart: true } }
+  ).then(displayForms => {
+    res.redirect('/');
+    req.flash('success_msg', 'added to cart');
+  });
 });
+
+router.get('/cart', (req, res) => {
+  DisplayForms.find({ inCart: true })
+    .sort({ title: 'desc' })
+    .then(displayForms => {
+      res.render('displayForms/cart', {
+        displayForms
+      });
+    });
+});
+
+router.get('../payment', (req, res) => {
+  res.render('/payment');
+});
+
 module.exports = router;

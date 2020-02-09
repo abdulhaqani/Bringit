@@ -5,10 +5,10 @@
 <div class="card d-inline-flex p-2 mx-auto" style="width: 80%">
   <h4>{{title}}</h4>
   <p>{{details}}</p>
-  <img type="image" src={{img_path}} name={{title}} class="mx-auto" style="width: 80%" alt="">
+  <img type="image" src={{img_path}} class="mx-auto" style="width: 80%" alt="">
   <p class="text-center">Price: ${{price}}</p>
   <form action="/displayforms/cart" class="text-center" method="POST">
-    <button type="submit" class="btn btn-success mx-auto">add to cart</button>
+    <input type="submit" class="form-control btn btn-success mx-auto" name="name" value={{title}}></input>
   </form>
 </div>
 {{/each}}
