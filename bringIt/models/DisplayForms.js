@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
@@ -5,20 +6,28 @@ const { Schema } = mongoose;
 const DisplaySchema = new Schema({
   title: {
     type: String,
-    required: true,
+    required: true
   },
-  user: {
+  img_path: {
     type: String,
-    required: true,
+    required: true
   },
   details: {
     type: String,
-    required: true,
+    required: true
   },
-  date: {
-    type: Date,
-    default: Date.now,
+  price: {
+    type: Number,
+    default: Date.now
   },
+  company: {
+    type: String,
+    default: Date.now
+  },
+  inCart: {
+    type: Boolean,
+    default: false
+  }
 });
 
 mongoose.model('displayForms', DisplaySchema);

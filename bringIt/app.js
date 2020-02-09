@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable import/no-absolute-path */
 // Defining global consts for the webserver
 const express = require('express');
@@ -9,24 +10,22 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const handlebars = require('express-handlebars').create({
-  defaultLayout: 'main',
+  // eslint-disable-next-line prettier/prettier
+  defaultLayout: 'main'
 });
 
 const app = express();
 
 // load routes
 const displayForms = require('./routes/displayForms');
-const greenhouse = require('./routes/greenhouse');
 const users = require('./routes/users');
 
 // require models
-require('./models/Greenhouse');
 require('./models/Users');
 require('./models/DisplayForms');
 
 // model instance
 const Display = mongoose.model('displayForms');
-const Green = mongoose.model('green');
 const User = mongoose.model('users');
 
 // Map global promise - get rid of warning
@@ -34,15 +33,15 @@ mongoose.Promise = global.Promise;
 
 // connect to mongoose
 mongoose
-  .connect('mongodb://127.0.0.1/greenhouse-dev', {
-    useNewUrlParser: true,
+  .connect('mongodb://127.0.0.1/bringIt-dev', {
+    useNewUrlParser: true
   })
   .then(() => console.log('connected to mongodb'))
   .catch(err => console.log(err));
 
 mongoose.connection
   .once('open', () => {
-    console.log('connected to greenhouse-dev');
+    console.log('connected to bringIt-dev');
   })
   .on('error', error => {
     console.log('connection error');
@@ -69,7 +68,7 @@ app.use(
   session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: true
   })
 );
 

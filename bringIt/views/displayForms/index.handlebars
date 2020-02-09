@@ -1,18 +1,15 @@
 {{#if user}}
-<div class="jumbotron text-center">
-  <h1 class="display-3">{{title}}</h1>
-  <p class="lead">add Display Forms</p>
-  <a href="/displayForms/add" class="btn btn-dark btn-lg">add idea</a>
-</div>
+<br>
 {{#each displayForms}}
-<div class="card card-body mb-2">
+
+<div class="card d-inline-flex p-2" style="width: 30%">
   <h4>{{title}}</h4>
   <p>{{details}}</p>
-  <a class="btn btn-dark btn-block" href="/displayForms/edit/{{id}}">Edit</a>
-  <form method="post" action="/displayForms/{{id}}?_method=DELETE">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" class="btn btn-danger btn-block" value="Delete">
+  <form action="/displayforms/pic" method="POST" style="width: 80%; margin-left: 10%">
+    <input type="image" src={{img_path}} name={{title}} class="mx-auto" style="width: 100%" alt="">
+    <input hidden type="text" name="name" class="form-control" value={{title}}></input>
   </form>
+  <p class="text-center">{{company}}: ${{price}}</p>
 </div>
 {{/each}}
 

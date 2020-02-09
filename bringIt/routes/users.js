@@ -23,9 +23,9 @@ router.get('/register', (req, res) => {
 // login form post
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/displayForms',
+    successRedirect: '/',
     failureRedirect: '/users/login',
-    failureFlash: true,
+    failureFlash: true
   })(req, res, next);
 });
 
@@ -46,7 +46,7 @@ router.post('/register', (req, res) => {
       lastName: req.body.last_name,
       email: req.body.email,
       password: req.body.passwd1,
-      password2: req.body.passwd2,
+      password2: req.body.passwd2
     });
   } else {
     User.findOne({ email: req.body.email }).then(user => {
@@ -59,7 +59,7 @@ router.post('/register', (req, res) => {
           firstName: req.body.first_name,
           lastName: req.body.last_name,
           email: req.body.email,
-          password: req.body.passwd1,
+          password: req.body.passwd1
         });
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {

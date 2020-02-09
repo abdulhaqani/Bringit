@@ -1,6 +1,24 @@
 <br />
 <div class="jumbotron" style="background-color: #2e5274; height: 60%;">
-  <div class="jumbotron" style="height: 100%;">
-
+  <div class="container" style="width: 50%">
+    {{#if user}}
+    <form action="/displayforms/search" method="POST">
+      <div class="form-group">
+        <label for="search" style="color: white">Search</label>
+        <input type="text" name="search" class="form-control" required>
+      </div>
+      <div class="row" style="margin-left: 0.5%;">
+        <div class="col-xs-2" style="margin-right: 5%;">
+          <button type="submit" class="btn btn-secondary">Submit</button>
+        </div>
+        <div class="col-xs-2" style="margin-right: 5%;">
+          <button type="button" class="btn btn-outline-light">Cancel</button>
+        </div>
+      </div>
+      <br />
+    </form>
+    {{else}}
+    <h1 class="text-center">Login to use service</h1>
+    {{/if}}
   </div>
 </div>

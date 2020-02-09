@@ -1,0 +1,18 @@
+{{#if user}}
+<br>
+{{#each displayForms}}
+
+<div class="card d-inline-flex p-2 mx-auto" style="width: 80%">
+  <h4>{{title}}</h4>
+  <p>{{details}}</p>
+  <img type="image" src={{img_path}} name={{title}} class="mx-auto" style="width: 80%" alt="">
+  <p class="text-center">Price: ${{price}}</p>
+  <form action="/displayforms/cart" class="text-center" method="POST">
+    <button type="submit" class="btn btn-success mx-auto">add to cart</button>
+  </form>
+</div>
+{{/each}}
+
+{{else}}
+<p>Login required</p>
+{{/if}}
